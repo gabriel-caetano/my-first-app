@@ -7,18 +7,20 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   buttonClicked: boolean = false;
-  accountCreated: boolean = false;
-  userName: string = "";
-  usernameIsEmpty() {
-    return this.userName === "";
+  serverCreated: boolean = false;
+  serverName: string = "";
+  servers = [];
+  serverNameIsEmpty() {
+    return this.serverName === "";
   }
-  resetUsername() {
+  resetServerName() {
+    this.servers.push(this.serverName);
     this.buttonClicked = true;
-    this.accountCreated = true;
-    this.userName = "";
+    this.serverCreated = true;
+    this.serverName = "";
   }
   getColor() {
-    if (this.userName !== "") {
+    if (this.serverName !== "") {
       return "green";
     } else {
       return "red";
