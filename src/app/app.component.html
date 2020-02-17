@@ -3,38 +3,31 @@
     <div class="col-xs-12">
       <h3>My First App</h3>
       <hr />
-      <p>Selected server name: {{ serverName }}</p>
+      <p>Your message: {{ textMessage }}</p>
       <input
         type="text"
-        [(ngModel)]="serverName"
-        placeholder="Write here your server"
+        [(ngModel)]="textMessage"
+        placeholder="Write some message here"
       />
       <br />
       <button
         [ngStyle]="{ backgroundColor: getColor() }"
         class="btn btn-primary"
-        [disabled]="serverNameIsEmpty()"
+        [disabled]="textMessageIsEmpty()"
         (click)="resetServerName()"
       >
-        Create Server
+        > Display details
       </button>
-      <p *ngIf="!buttonClicked && serverName === ''; else serverCreatingOne">
-        No server created yet.
-      </p>
-      <ng-template #serverCreatingOne
-        ><p *ngIf="!buttonClicked && serverName !== ''; else createdServer">
-          Creating server.
-        </p></ng-template
-      >
-      <ng-template #createdServer
-        ><p *ngIf="serverName === ''; else serverCreatingTwo">
-          Server created.
-        </p></ng-template
-      >
-      <ng-template #serverCreatingTwo
-        ><p>Creating another server.</p></ng-template
-      >
-      <app-server *ngFor="let server of servers"></app-server>
+      <div *ngIf="display">
+        <div *ngFor="let paragr of paragraphs">
+          <p
+            [ngClass]="{ last: paragr.index >= 5 }"
+            [ngStyle]="{ backgroundColor: getBackgroundColor(paragr) }"
+          >
+            {{ paragr.text }}
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

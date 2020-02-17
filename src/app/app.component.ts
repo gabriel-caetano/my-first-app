@@ -6,24 +6,32 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
-  buttonClicked: boolean = false;
-  serverCreated: boolean = false;
-  serverName: string = "";
-  servers = [];
-  serverNameIsEmpty() {
-    return this.serverName === "";
+  display: boolean = false;
+  textMessage: string = "";
+  clickCounter: number = 0;
+  paragraphs = [];
+  textMessageIsEmpty() {
+    return this.textMessage === "";
   }
   resetServerName() {
-    this.servers.push(this.serverName);
-    this.buttonClicked = true;
-    this.serverCreated = true;
-    this.serverName = "";
+    let paragraph = { index: this.clickCounter, text: this.textMessage };
+    this.paragraphs.push(paragraph);
+    this.clickCounter++;
+    this.display = !this.display;
+    this.textMessage = "";
   }
   getColor() {
-    if (this.serverName !== "") {
+    if (this.textMessage !== "") {
       return "green";
     } else {
       return "red";
+    }
+  }
+  getBackgroundColor(paragraph) {
+    if (paragraph.index >= 5) {
+      return "blue";
+    } else {
+      return "white";
     }
   }
 }
