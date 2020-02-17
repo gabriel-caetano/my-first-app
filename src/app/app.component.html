@@ -1,11 +1,22 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h3>Hello!</h3>
+      <h3>My First App</h3>
       <hr />
-      <app-servers></app-servers>
-      <app-warning-alert></app-warning-alert
-      ><app-success-alert></app-success-alert>
+      <p>Selected Username: {{ userName }}</p>
+      <input
+        type="text"
+        [(ngModel)]="userName"
+        placeholder="Write here your User"
+      />
+      <br />
+      <button
+        class="btn btn-primary"
+        [disabled]="usernameIsEmpty()"
+        (click)="resetUsername()"
+      >
+        Create Account
+      </button>
     </div>
   </div>
 </div>
