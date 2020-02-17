@@ -17,4 +17,11 @@ export class AppComponent {
     this.accountCreated = true;
     this.userName = "";
   }
+  getColor() {
+    if (this.userName !== "") {
+      return "green";
+    } else {
+      return "red";
+    }
+  }
 }

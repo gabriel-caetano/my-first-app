@@ -11,6 +11,7 @@
       />
       <br />
       <button
+        [ngStyle]="{ backgroundColor: getColor() }"
         class="btn btn-primary"
         [disabled]="usernameIsEmpty()"
         (click)="resetUsername()"
