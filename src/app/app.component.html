@@ -17,8 +17,22 @@
       >
         Create Account
       </button>
-      <p *ngIf="accountCreated; else noAccount">Account created</p>
-      <ng-template #noAccount><p>No account created yet.</p></ng-template>
+      <p *ngIf="!buttonClicked && userName === ''; else accountCreatingOne">
+        No account created yet.
+      </p>
+      <ng-template #accountCreatingOne
+        ><p *ngIf="!buttonClicked && userName !== ''; else createdAccount">
+          Creating account.
+        </p></ng-template
+      >
+      <ng-template #createdAccount
+        ><p *ngIf="userName === ''; else accountCreatingTwo">
+          Account created.
+        </p></ng-template
+      >
+      <ng-template #accountCreatingTwo
+        ><p>Creating another account.</p></ng-template
+      >
     </div>
   </div>
 </div>
