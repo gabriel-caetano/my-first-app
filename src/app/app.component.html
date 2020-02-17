@@ -17,6 +17,8 @@
       >
         Create Account
       </button>
+      <p *ngIf="accountCreated; else noAccount">Account created</p>
+      <ng-template #noAccount><p>No account created yet.</p></ng-template>
     </div>
   </div>
 </div>

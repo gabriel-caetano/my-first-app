@@ -6,11 +6,13 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent {
+  accountCreated: boolean = false;
   userName: string = "";
   usernameIsEmpty() {
     return this.userName === "";
   }
   resetUsername() {
+    this.accountCreated = true;
     this.userName = "";
   }
 }
